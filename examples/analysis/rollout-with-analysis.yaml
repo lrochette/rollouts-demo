@@ -29,9 +29,14 @@ spec:
         app: canary-demo
     spec:
       containers:
-      - image: argoproj/rollouts-demo:yellow
+      - name: canary-demo
+        #image: argoproj/rollouts-demo:red
+        #image: argoproj/rollouts-demo:orange
+        image: argoproj/rollouts-demo:yellow
+        #image: argoproj/rollouts-demo:green
+        #image: argoproj/rollouts-demo:blue
+        #image: argoproj/rollouts-demo:purple
         imagePullPolicy: Always
-        name: canary-demo
         ports:
         - containerPort: 8080
           name: http
