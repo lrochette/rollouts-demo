@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: canary-demo
+  name: canary-analysis
 spec:
   replicas: 5
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: canary-demo
+      app: canary-analysis
   template:
     metadata:
       labels:
-        app: canary-demo
+        app: canary-analysis
     spec:
       containers:
-      - name: canary-demo
+      - name: canary-analysis
         #image: argoproj/rollouts-demo:red
         #image: argoproj/rollouts-demo:orange
         image: argoproj/rollouts-demo:yellow
@@ -36,8 +36,8 @@ spec:
         templateName: success-rate
         args:
         - name: ingress
-          value: canary-demo
-      canaryService: canary-demo-preview
+          value: canary-analysis
+      canaryService: canary-analysis-preview
       steps:
       - setWeight: 40
       - pause: {duration: 30}
