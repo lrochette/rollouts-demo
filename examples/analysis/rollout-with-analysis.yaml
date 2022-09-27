@@ -33,7 +33,8 @@ spec:
   strategy:
     canary:
       analysis:
-        templateName: success-rate
+        templates:
+        - templateName: success-rate
         args:
         - name: ingress
           value: canary-analysis
